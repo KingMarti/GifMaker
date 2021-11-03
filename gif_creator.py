@@ -35,7 +35,7 @@ def getTitle():
     filename = prefix+str(gid)
 
 def makeGif():
-    number_inputs = 3
+    number_inputs = random.randint(3,10)
     inputs =[os.path.join(directory,f)for f in os.listdir(directory)if os.path.isfile(os.path.join(directory,f))and fnmatch.fnmatch(f,ext)]
     random_select = random.sample(inputs,number_inputs)
     clips=[]
@@ -47,7 +47,7 @@ def makeGif():
         gif_out_path = gif_out + filename+'.gif'
         gif = random.choice(clips)
         gif_clip = moviepy.editor.VideoFileClip(gif).resize((640,360))
-        gif_length =random.uniform(3,gif_clip.duration)
+        gif_length =10/number_inputs
         #select a random time point
         print('gif clip type is : ',type(gif_clip))
         start=round(random.uniform(0,gif_clip.duration-gif_length),2)
